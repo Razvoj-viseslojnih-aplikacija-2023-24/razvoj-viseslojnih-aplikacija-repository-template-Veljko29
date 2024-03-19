@@ -56,5 +56,11 @@ public class SudServiceImpl implements SudService {
 		return repo.findByNazivContainingIgnoreCase(naziv);
 	}
 
+	@Override
+	public Optional<Sud> findById(int id) {
+		// TODO Auto-generated method stub
+		return repo.findById(id);
+	}
+
 
 }

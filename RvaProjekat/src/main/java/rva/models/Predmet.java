@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,7 +36,8 @@ private static final long serialVersionUID = 1L;
 	@JoinColumn(name = "sud")
 	private Sud sud;
 	
-	@OneToMany(mappedBy = "rociste") //vlasnik rociste-predmet jeste rociste
+	@OneToMany(mappedBy = "rociste", cascade = CascadeType.REMOVE) //vlasnik rociste-predmet jeste rociste
+	@JsonIgnore
 	private List<Rociste> rociste;
 	
 	public Predmet( ) {

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +30,8 @@ public class Ucesnik implements Serializable {
 	private String mbr;
 	private String status;
 	
-	@OneToMany(mappedBy = "rociste") //vlasnik rociste-ucesnik jeste rociste
+	@OneToMany(mappedBy = "rociste",  cascade = CascadeType.REMOVE) //vlasnik rociste-ucesnik jeste rociste. Cascade kada brisemo jednom torku, brise je u ostalim tabelama
+	@JsonIgnore
 	private List<Rociste> rociste;
 	
 	public Ucesnik () {

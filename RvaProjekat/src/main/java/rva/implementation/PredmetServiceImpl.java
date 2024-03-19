@@ -64,4 +64,10 @@ public class PredmetServiceImpl implements PredmetService {
 		return repo.findBySud(sud);
 	}
 
+	@Override
+	public Optional<Predmet> findById(int id) {
+		// TODO Auto-generated method stub
+		return repo.findById(id);
+	}
+
 }

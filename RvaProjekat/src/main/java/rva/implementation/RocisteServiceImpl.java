@@ -73,4 +73,10 @@ public class RocisteServiceImpl implements RocisteService {
 		return repo.findByPredmet(predmet);
 	}
 
+	@Override
+	public Optional<Rociste> findById(int id) {
+		// TODO Auto-generated method stub
+		return repo.findById(id);
+	}
+
 }

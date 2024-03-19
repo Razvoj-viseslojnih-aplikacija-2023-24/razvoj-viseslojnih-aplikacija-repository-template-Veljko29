@@ -54,5 +54,11 @@ public class UcesnikServiceImpl implements UcesnikService {
 		return repo.findByMbrContainingIgnoreCase(mbr);
 	}
 
+	@Override
+	public Optional<Ucesnik> findById(int id) {
+		// TODO Auto-generated method stub
+		return repo.findById(id);
+	}
+
 
 }
