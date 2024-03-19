@@ -36,7 +36,7 @@ private static final long serialVersionUID = 1L;
 	@JoinColumn(name = "sud")
 	private Sud sud;
 	
-	@OneToMany(mappedBy = "rociste", cascade = CascadeType.REMOVE) //vlasnik rociste-predmet jeste rociste
+	@OneToMany(mappedBy = "predmet", cascade = CascadeType.REMOVE) //vlasnik rociste-predmet jeste rociste
 	@JsonIgnore
 	private List<Rociste> rociste;
 	

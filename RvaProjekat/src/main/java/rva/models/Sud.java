@@ -26,7 +26,7 @@ public class Sud implements Serializable {
 	private String naziv;
 	private String adresa;
 	
-	@OneToMany(mappedBy = "predmet") //vlasnik predmet-sud jeste predmet
+	@OneToMany(mappedBy = "sud") //vlasnik predmet-sud jeste predmet
 	@JsonIgnore
 	private List<Predmet> predmet;
 	

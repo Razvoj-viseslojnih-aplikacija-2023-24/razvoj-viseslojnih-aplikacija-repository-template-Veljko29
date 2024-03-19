@@ -30,7 +30,7 @@ public class Ucesnik implements Serializable {
 	private String mbr;
 	private String status;
 	
-	@OneToMany(mappedBy = "rociste",  cascade = CascadeType.REMOVE) //vlasnik rociste-ucesnik jeste rociste. Cascade kada brisemo jednom torku, brise je u ostalim tabelama
+	@OneToMany(mappedBy = "ucesnik",  cascade = CascadeType.REMOVE) //vlasnik rociste-ucesnik jeste rociste. Cascade kada brisemo jednom torku, brise je u ostalim tabelama
 	@JsonIgnore
 	private List<Rociste> rociste;
 	
