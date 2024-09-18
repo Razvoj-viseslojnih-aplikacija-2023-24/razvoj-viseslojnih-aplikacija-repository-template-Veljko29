@@ -1,14 +1,14 @@
 <mat-toolbar color="accent">
   <span class="title-center">Sud</span>
+  <button  class="add-button" (click)="openDialog(1)">
+    <img src="assets/icons8-plus-16.png"  class="add-icon"/>
+  </button>
 </mat-toolbar>
 <div class="container mat-elevation-z8">
   <div class="filter-field">
     <mat-form-field>
       <input matInput placeholder="Pretraga .." name="filterField" (keyup)="applyFilter($event)" />
     </mat-form-field>
-    <button style="margin: 5 5 5 5; padding-top: 5;"  color="purple" class="add-button" (click)="openDialog(1)">
-      <mat-icon>add</mat-icon>
-    </button>
   </div>
 
   <mat-table matSort [dataSource]="dataSource" class="mat-cell">
@@ -37,10 +37,10 @@
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.naziv, row.adresa)">
-          <mat-icon aria-label="Edit">edit</mat-icon>
+          <img src="assets/icons8-edit-16.png"  class="add-icon"/>
         </button>
         <button mat-icon-button color="warn" (click)="openDialog(3, row.id, row.naziv, row.adresa)">
-          <mat-icon aria-label="Delete">delete</mat-icon>
+          <img src="assets/icons8-delete-16.png"  class="add-icon"/>
         </button>
       </mat-cell>
     </ng-container>

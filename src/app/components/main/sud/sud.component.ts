@@ -52,7 +52,7 @@ export class SudComponent implements OnInit, OnDestroy {
     dialogRef.componentInstance.flag = flag;
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 1) {
-        this.loadData(); // Osvježi podatke nakon zatvaranja dijaloga
+        this.loadData(); // Osveži podatke nakon zatvaranja dijaloga
       }
     });
   }
