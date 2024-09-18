@@ -1,0 +1,71 @@
+<mat-toolbar color="accent">
+  <span class="title-center">Predmet</span>
+</mat-toolbar>
+
+<div class="container mat-elavation-z8">
+  <div class="filter-field">
+    <mat-form-field subscriptSizing="dynamic">
+      <input matInput placeholder="Pretraga .." name="filterField" (keyup)="applyFilter($event)"/>
+    </mat-form-field>
+  </div>
+  <mat-table matSort [dataSource]="dataSource" class="mat-cell">
+    <!--ID-->
+    <ng-container matColumnDef="id">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    </ng-container>
+    <!--brojpr-->
+    <ng-container matColumnDef="brojPr">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Broj predmeta</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.brojPr }}</mat-cell>
+    </ng-container>
+    <!-- Opis -->
+    <ng-container matColumnDef="opis">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>Opis</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.opis }}</mat-cell>
+    </ng-container>
+    <!--Datum-->
+    <ng-container matColumnDef="mbr">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>MATICNI BROJ</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.mbr }}</mat-cell>
+    </ng-container>
+       <!--Datum-->
+       <ng-container matColumnDef="datum_pocetka">
+        <mat-header-cell mat-sort-header *matHeaderCellDef>Datum pocetka</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.datum_pocetka }}</mat-cell>
+      </ng-container>
+      <!--Aktivan-->
+      <ng-container matColumnDef="aktivan">
+        <mat-header-cell mat-sort-header *matHeaderCellDef>AKTIVAN</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.aktivan }}</mat-cell>
+      </ng-container>
+       <!--Sud-->
+       <ng-container matColumnDef="sud">
+        <mat-header-cell mat-sort-header *matHeaderCellDef>SUD</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.sud.naziv }}</mat-cell>
+      </ng-container>
+    <!-- Action Buttons -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="white" (click)="openDialog(1)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row; let i = index">
+        <button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.brojPr, row.opis, row.datum_pocetka, row.aktivan,row.sud)" >
+          <mat-icon color="primary" aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="openDialog(3, row.id, row.brojPr, row.opis, row.datum_pocetka, row.aktivan, row.sud)">
+          <mat-icon color= "warn" aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      style="cursor: pointer;"
+      *matRowDef="let row; columns: displayedColumns">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="20" [pageSize]="5" [pageSizeOptions]="[3,6,9,12]"></mat-paginator>
+</div>

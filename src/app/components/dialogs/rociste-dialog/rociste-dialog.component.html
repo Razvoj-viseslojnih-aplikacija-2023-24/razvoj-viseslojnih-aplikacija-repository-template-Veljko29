@@ -1,0 +1,40 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje ročišta</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Ažuriranje ročišta: {{data.sudnica}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje ročišta: {{data.sudnica}}</h3>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form">
+     <mat-form-field>
+         <input matInput placeholder="Datum_rocista" name="Datum_rocista" [disabled]="flag==3" [(ngModel)]="data.datum_rocista" required />
+     </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field>
+          <input matInput placeholder="Sudnica" name="Sudnica" [disabled]="flag==3" [(ngModel)]="data.sudnica" required />
+      </mat-form-field>
+     </div>
+
+     <div class="form">
+      <mat-select [compareWith]="compare" class="form-field" placeholder="Ucesnik" name="Ucesnik" [disabled]="flag==3" [(ngModel)]="data.Ucesnik" required>
+          <mat-option *ngFor="let ucesnik of ucesnik" [value]="ucesnik">
+              {{ucesnik.mbr}}
+          </mat-option>
+      </mat-select>
+  </div>
+  <div class="form">
+    <mat-select [compareWith]="compare" class="form-field" placeholder="Predmet" name="Predmet" [disabled]="flag==3" [(ngModel)]="data.Predmet" required>
+        <mat-option *ngFor="let predmet of predmet" [value]="predmet">
+            {{predmet.brojPr}}
+        </mat-option>
+    </mat-select>
+</div>
+</form>
+
+ <div class="mat-dialog-actions">
+        <button matButton *ngIf="flag == 1" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="add()">Sačuvaj</button>
+        <button matButton *ngIf="flag == 2" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="update()">Modifikuj</button>
+        <button matButton *ngIf="flag == 3" mat-dialog-close="1" (click)="delete()">Obriši</button>
+        <button matButton (click)="cancel()">Poništi</button>
+    </div>
+</div>

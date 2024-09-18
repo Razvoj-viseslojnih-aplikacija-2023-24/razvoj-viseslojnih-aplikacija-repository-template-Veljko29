@@ -1,0 +1,61 @@
+<mat-toolbar color="accent">
+  <span class="title-center">Učesnik</span>
+</mat-toolbar>
+
+<div class="container mat-elavation-z8">
+  <div class="filter-field">
+    <mat-form-field subscriptSizing="dynamic">
+      <input matInput placeholder="Pretraga .." name="filterField" (keyup)="applyFilter($event)"/>
+    </mat-form-field>
+  </div>
+  <mat-table matSort [dataSource]="dataSource" class="mat-cell">
+    <!--ID-->
+    <ng-container matColumnDef="id">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    </ng-container>
+    <!--Ime-->
+    <ng-container matColumnDef="ime">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>IME</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.ime }}</mat-cell>
+    </ng-container>
+    <!-- Prezime -->
+    <ng-container matColumnDef="prezime">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>PREZIME</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.prezime }}</mat-cell>
+    </ng-container>
+    <!--Mbr-->
+    <ng-container matColumnDef="mbr">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>MATICNI BROJ</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.mbr }}</mat-cell>
+    </ng-container>
+       <!--Status-->
+       <ng-container matColumnDef="status">
+        <mat-header-cell mat-sort-header *matHeaderCellDef>STATUS</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.status }}</mat-cell>
+      </ng-container>
+    <!-- Action Buttons -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="white" (click)="openDialog(1)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row; let i = index">
+        <button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.naziv, row.adresa)" >
+          <mat-icon color="primary" aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="openDialog(3, row.id, row.naziv, row.adresa)">
+          <mat-icon color= "warn" aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      style="cursor: pointer;"
+      *matRowDef="let row; columns: displayedColumns">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="20" [pageSize]="5" [pageSizeOptions]="[3,6,9,12]"></mat-paginator>
+</div>
