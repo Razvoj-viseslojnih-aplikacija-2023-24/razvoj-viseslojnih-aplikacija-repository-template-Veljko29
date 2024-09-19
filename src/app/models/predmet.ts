@@ -4,7 +4,7 @@ export class Predmet{
   id!: number;
   brojPr!: string;
   opis!: string;
-  datum_pocetka!: Date;
+  datum_pocetka!: string;
   aktivan!: boolean;
-  Sud!:Sud
+  sud!:Sud
 }

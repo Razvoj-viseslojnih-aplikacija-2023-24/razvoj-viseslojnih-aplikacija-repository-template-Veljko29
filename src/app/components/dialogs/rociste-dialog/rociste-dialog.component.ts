@@ -18,6 +18,7 @@ export class RocisteDialogComponent {
 
    ucesnik!: Ucesnik[];
    predmet!: Predmet[];
+
   constructor(
     public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<Rociste>,
@@ -26,9 +27,37 @@ export class RocisteDialogComponent {
     public PredmetService: PredmetService,
     public UcesnikService: UcesnikService
   ){}
+
+  ngOnInit(): void {
+    this.loadUcesnici();
+    this.loadPredmeti();
+  }
+
+  public loadUcesnici(): void {
+    this.UcesnikService.getAllUcesniks().subscribe(
+      (data) => {
+        this.ucesnik = data;
+      },
+      (error: Error) => {
+        console.log(error.name + ' ' + error.message);
+      }
+    );
+  }
+
+  public loadPredmeti(): void {
+    this.PredmetService.getAllPredmets().subscribe(
+      (data) => {
+        this.predmet = data;
+      },
+      (error: Error) => {
+        console.log(error.name + ' ' + error.message);
+      }
+    );
+  }
   public compare(a:any, b:any){
     return a.id == b.id;
   }
+
   public add(){
     this.service.addRociste(this.data).subscribe(
       () => {

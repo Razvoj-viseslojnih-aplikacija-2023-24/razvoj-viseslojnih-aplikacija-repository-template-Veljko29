@@ -1,6 +1,6 @@
 <mat-toolbar color="accent">
   <span class="title-center">Sud</span>
-  <button  class="add-button" (click)="openDialog(1)">
+  <button mat-icon-button  class="add-button" (click)="openDialog(1)">
     <img src="assets/icons8-plus-16.png"  class="add-icon"/>
   </button>
 </mat-toolbar>
@@ -33,7 +33,7 @@
     <!-- Action Buttons -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
-        Akcije
+
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.naziv, row.adresa)">

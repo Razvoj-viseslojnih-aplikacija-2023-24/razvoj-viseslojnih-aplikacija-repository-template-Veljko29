@@ -22,6 +22,21 @@ export class PredmetDialogComponent {
     public service: PredmetService,
     public SudService: SudService
   ){}
+  ngOnInit(): void {
+    this.loadSudovi();
+  }
+
+  public loadSudovi(): void {
+    this.SudService.getAllSuds().subscribe(
+      (data: Sud[]) => {
+        this.sud = data;
+      },
+      (error: Error) => {
+        console.log(error.name + ' ' + error.message);
+      }
+    );
+  }
+
   public compare(a:any, b:any){
     return a.id == b.id;
   }

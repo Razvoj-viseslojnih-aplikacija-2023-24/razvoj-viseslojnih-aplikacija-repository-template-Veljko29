@@ -1,31 +1,48 @@
+/* Prilagodite širine kolona */
 mat-cell:nth-child(1),
 mat-header-cell:nth-child(1){
   display: flex;
   justify-content: center;
-  flex: 0 0 15%;
+  flex: 0 0 15%; /* Smanjena širina za prvu kolonu */
 }
 
 mat-cell:nth-child(2),
 mat-header-cell:nth-child(2){
   display: flex;
   justify-content: center;
-  flex: 0 0 45%;
+  flex: 0 0 15%; /* Smanjena širina za drugu kolonu */
 }
 
 mat-cell:nth-child(3),
 mat-header-cell:nth-child(3){
   display: flex;
   justify-content: center;
-  flex: 0 0 15%;
+  flex: 0 0 15%; /* Smanjena širina za treću kolonu */
 }
 
 mat-cell:nth-child(4),
 mat-header-cell:nth-child(4){
   display: flex;
   justify-content: center;
-  flex: 0 0 25%;
+  flex: 0 0 15%; /* Smanjena širina za četvrtu kolonu */
+}
+mat-cell:nth-child(5),
+mat-header-cell:nth-child(5){
+  display: flex;
+  justify-content: center;
+  flex: 0 0 15%; /* Smanjena širina za četvrtu kolonu */
 }
 
+/* Stil za dugme za dodavanje */
+.add-button {
+  margin-left: auto; /* Pomeri dugme na desnu stranu */
+}
+
+/* Stil za ikonice */
+.add-icon {
+  width: 24px; /* Prilagodi veličinu ikone */
+  height: 24px; /* Prilagodi veličinu ikone */
+}
 
 .title-center {
   margin: 0 auto;

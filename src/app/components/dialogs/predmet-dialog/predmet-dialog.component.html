@@ -24,14 +24,9 @@
           <input matInput placeholder="Aktivan" name="Aktivan" [disabled]="flag==3" [(ngModel)]="data.aktivan" required />
       </mat-form-field>
      </div>
-     <div class="form">
-      <mat-form-field>
-          <input matInput placeholder="BrojPr" name="BrojPr" [disabled]="flag==3" [(ngModel)]="data.brojPr" required />
-      </mat-form-field>
-     </div>
 
      <div class="form">
-      <mat-select [compareWith]="compare" class="form-field" placeholder="Sud" name="Sud" [disabled]="flag==3" [(ngModel)]="data.Sud" required>
+      <mat-select [compareWith]="compare" class="form-field" placeholder="Sud" name="Sud" [disabled]="flag==3" [(ngModel)]="data.sud" required>
           <mat-option *ngFor="let sud of sud" [value]="sud">
               {{sud.naziv}}
           </mat-option>
