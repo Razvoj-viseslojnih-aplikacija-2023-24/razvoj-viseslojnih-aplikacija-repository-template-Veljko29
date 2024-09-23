@@ -38,7 +38,7 @@ export class RocisteComponent implements OnInit, OnDestroy {
   public loadData(): void {
     this.subscription = this.service.getAllRocistes().subscribe(
       (data) => {
-        console.log(data);
+        console.log('Podaci o ročištima:', data);
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -50,16 +50,15 @@ export class RocisteComponent implements OnInit, OnDestroy {
   }
 
   public openDialog(flag: number, id?: number, datum_rocista?: Date, sudnica?: string, ucesnik?: Ucesnik, predmet?: Predmet): void {
-    const dialogRef = this.dialog.open(RocisteDialogComponent, { data: { id, datum_rocista, sudnica, ucesnik, predmet } });
+    console.log('Otvaranje dijaloga sa podacima:', { id, datum_rocista, sudnica, ucesnik, predmet });
+    const dialogRef = this.dialog.open(RocisteDialogComponent, { data: { id, datum_rocista, sudnica , ucesnik, predmet } });
     dialogRef.componentInstance.flag = flag;
-    dialogRef.afterClosed().subscribe(
-      (result) => {
+    dialogRef.afterClosed().subscribe((result) => {
         if (result === 1) {
-          this.loadData();
+            this.loadData();
         }
-      }
-    );
-  }
+    });
+}
 
   public applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();

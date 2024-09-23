@@ -14,11 +14,11 @@ export class RocisteService {
   public getAllRocistes():Observable<any>{
     return this.httpClient.get(`${ROCISTE_URL}`);
   }
-  public getPredmetByPredmet(predmetId:number):Observable<any>{
+  public getRocistetByPredmet(predmetId:number):Observable<any>{
     return this.httpClient.get(`${ROCISTE_BY_PREDMET_URL}/${predmetId}`);
   }
 
-  public getPredmetByUcesnik(ucesnikId:number):Observable<any>{
+  public getRocisteByUcesnik(ucesnikId:number):Observable<any>{
     return this.httpClient.get(`${ROCISTE_BY_UCESNIK_URL}/${ucesnikId}`);
   }
 

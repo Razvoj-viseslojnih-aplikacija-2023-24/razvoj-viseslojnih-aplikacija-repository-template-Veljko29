@@ -23,8 +23,13 @@ export class PredmetDialogComponent {
     public SudService: SudService
   ){}
   ngOnInit(): void {
+    this.data.aktivan = this.data.aktivan !== undefined ? this.data.aktivan : false;
     this.loadSudovi();
   }
+  public toggleAktivan(isChecked: boolean): void {
+    this.data.aktivan = isChecked; // Postavi aktivan status na vrednost koju je korisnik izabrao
+    console.log('Aktivan status:', this.data.aktivan); // Proveri novi status
+}
 
   public loadSudovi(): void {
     this.SudService.getAllSuds().subscribe(
@@ -41,6 +46,7 @@ export class PredmetDialogComponent {
     return a.id == b.id;
   }
   public add(){
+    console.log('Pozvana metoda add()'); // Dodaj ovu liniju za proveru
     this.service.addPredmet(this.data).subscribe(
       () => {
         this.snackBar.open(`Uspesno dodat predmet sa brojem: ${this.data.brojPr}`,

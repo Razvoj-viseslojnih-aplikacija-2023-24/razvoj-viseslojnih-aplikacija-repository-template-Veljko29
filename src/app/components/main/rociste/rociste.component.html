@@ -23,7 +23,7 @@
     <!-- Datum Ročišta -->
     <ng-container matColumnDef="datum_rocista">
       <mat-header-cell *matHeaderCellDef mat-sort-header>DATUM ROCISTA</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.datum_rocista | date }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.datum_rocista }}</mat-cell>
     </ng-container>
 
     <!-- Sudnica -->
@@ -35,13 +35,13 @@
     <!-- Učesnik -->
     <ng-container matColumnDef="ucesnik">
       <mat-header-cell *matHeaderCellDef mat-sort-header>UČESNIK</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.ucesnik.mbr }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.ucesnik?.mbr }}</mat-cell>
     </ng-container>
 
     <!-- Predmet -->
     <ng-container matColumnDef="predmet">
       <mat-header-cell *matHeaderCellDef mat-sort-header>PREDMET</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.predmet.brojPr }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.predmet?.brojPr }}</mat-cell>
     </ng-container>
 
     <!-- Action Buttons -->

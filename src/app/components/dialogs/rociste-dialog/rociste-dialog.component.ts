@@ -4,10 +4,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Predmet } from 'src/app/models/predmet';
 import { Rociste } from 'src/app/models/rociste';
 import { Ucesnik } from 'src/app/models/ucesnik';
+
+import { PredmetService } from 'src/app/services/predmet.service';
 import { RocisteService } from 'src/app/services/rociste.service';
 import { UcesnikService } from 'src/app/services/ucesnik.service';
-import { PredmetService } from 'src/app/services/predmet.service';
-
 @Component({
   selector: 'app-rociste-dialog',
   templateUrl: './rociste-dialog.component.html',
@@ -24,19 +24,20 @@ export class RocisteDialogComponent {
     public dialogRef: MatDialogRef<Rociste>,
     @Inject (MAT_DIALOG_DATA) public data: Rociste,
     public service: RocisteService,
-    public PredmetService: PredmetService,
-    public UcesnikService: UcesnikService
+    public UcesnikService: UcesnikService,
+    public PredmetService: PredmetService
   ){}
-
   ngOnInit(): void {
     this.loadUcesnici();
     this.loadPredmeti();
+    console.log('Podaci u dijalogu:', this.data);
   }
 
   public loadUcesnici(): void {
     this.UcesnikService.getAllUcesniks().subscribe(
-      (data) => {
+      (data: Ucesnik[]) => {
         this.ucesnik = data;
+        console.log('Učesnici:', this.ucesnik);
       },
       (error: Error) => {
         console.log(error.name + ' ' + error.message);
@@ -46,22 +47,24 @@ export class RocisteDialogComponent {
 
   public loadPredmeti(): void {
     this.PredmetService.getAllPredmets().subscribe(
-      (data) => {
+      (data: Predmet[]) => {
         this.predmet = data;
+        console.log('Predmeti:', this.predmet);
       },
       (error: Error) => {
         console.log(error.name + ' ' + error.message);
       }
     );
   }
-  public compare(a:any, b:any){
-    return a.id == b.id;
-  }
 
+  public compare(a:any, b:any){
+    return a && b && a.id === b.id;
+  }
   public add(){
+    console.log('Pozvana metoda add()');
     this.service.addRociste(this.data).subscribe(
       () => {
-        this.snackBar.open(`Uspesno dodato rociste sa sudnicom: ${this.data.sudnica}`,
+        this.snackBar.open(`Uspesno dodat predmet sa sudnicom: ${this.data.sudnica}`,
                             `U redu`, {duration:2500});
       }
     ),

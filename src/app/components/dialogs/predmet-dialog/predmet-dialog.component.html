@@ -16,13 +16,15 @@
      </div>
      <div class="form">
       <mat-form-field>
-          <input matInput placeholder="Datum_pocetka" name="Datum_pocetka" [disabled]="flag==3" [(ngModel)]="data.datum_pocetka" required />
+          <input matInput [matDatepicker]="picker" placeholder="Izaberi datum" placeholder="Datum_pocetka" name="Datum_pocetka" [disabled]="flag==3" [(ngModel)]="data.datum_pocetka" required />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
      </div>
      <div class="form">
-      <mat-form-field>
-          <input matInput placeholder="Aktivan" name="Aktivan" [disabled]="flag==3" [(ngModel)]="data.aktivan" required />
-      </mat-form-field>
+      <mat-checkbox [checked]="data.aktivan" (change)="toggleAktivan($event.checked)" [disabled]="flag === 3">
+    Aktivan
+</mat-checkbox>
      </div>
 
      <div class="form">

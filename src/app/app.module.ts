@@ -38,7 +38,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,33 +1,34 @@
 <div class="container">
   <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje ročišta</h3>
-  <h3 mat-dialog-title *ngIf="flag == 2">Ažuriranje ročišta: {{data.sudnica}}</h3>
-  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje ročišta: {{data.sudnica}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Ažuriranje ročišta: {{ data.sudnica }}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje ročišta: {{ data.sudnica }}</h3>
 
   <form class="mat-dialog-content" #formControl="ngForm">
-    <div class="form">
-     <mat-form-field>
-         <input matInput placeholder="Datum_rocista" name="Datum_rocista" [disabled]="flag==3" [(ngModel)]="data.datum_rocista" required />
-     </mat-form-field>
-    </div>
-    <div class="form">
+     <div class="form">
+      <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Izaberi datum" placeholder="datum rocista" name="datum_rocista" [disabled]="flag==3" [(ngModel)]="data.datum_rocista" required />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+     </div>
+     <div class="form">
       <mat-form-field>
           <input matInput placeholder="Sudnica" name="Sudnica" [disabled]="flag==3" [(ngModel)]="data.sudnica" required />
       </mat-form-field>
      </div>
-
      <div class="form">
-      <mat-select [compareWith]="compare" class="form-field" placeholder="Ucesnik" name="Ucesnik" [disabled]="flag==3" [(ngModel)]="data.Ucesnik" required>
-          <mat-option *ngFor="let ucesnik of ucesnik" [value]="ucesnik">
-              {{ucesnik.mbr}}
-          </mat-option>
-      </mat-select>
-  </div>
-  <div class="form">
-    <mat-select [compareWith]="compare" class="form-field" placeholder="Predmet" name="Predmet" [disabled]="flag==3" [(ngModel)]="data.Predmet" required>
-        <mat-option *ngFor="let predmet of predmet" [value]="predmet">
-            {{predmet.brojPr}}
+      <mat-select [compareWith]="compare" class="form-field" placeholder="Učesnik" name="Ucesnik" [disabled]="flag==3" [(ngModel)]="data.ucesnik" required>
+        <mat-option *ngFor="let ucesnikd of ucesnik" [value]="ucesnikd">
+            {{ ucesnikd.mbr }}
         </mat-option>
     </mat-select>
+  </div>
+  <div class="form">
+    <mat-select [compareWith]="compare" class="form-field" placeholder="Predmet" name="Predmet" [disabled]="flag==3" [(ngModel)]="data.predmet" required>
+      <mat-option *ngFor="let predmetd of predmet" [value]="predmetd">
+          {{ predmetd.brojPr}}
+      </mat-option>
+  </mat-select>
 </div>
 </form>
 

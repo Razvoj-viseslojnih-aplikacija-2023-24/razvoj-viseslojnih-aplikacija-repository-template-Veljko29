@@ -1,0 +1,141 @@
+/* Reset osnovnog stilizovanja */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Osnovni stilovi za telo stranice */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Stilizovanje glavnog kontejnera */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Stilizovanje navigacije */
+nav {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex; /* Flexbox omogućava raspoređivanje elemenata jedan pored drugog */
+  justify-content: center; /* Centriranje unutar kontejnera */
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+  position: relative; /* Dodato za padajuću listu */
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 14px 16px;
+}
+
+nav ul li a:hover {
+  background-color: #111;
+}
+
+/* Stilizacija padajuće liste */
+.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Prikaz padajuće liste kada je miš preko */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/* Stilizacija glavnog naslova */
+header {
+  background: #333;
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+/* Stilizacija sekcija */
+section {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+section p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Stilizacija podnožja */
+footer {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+ul {
+  list-style: none;
+  display: flex; /* Flexbox omogućava raspoređivanje elemenata jedan pored drugog */
+  justify-content: center; /* Centriranje unutar kontejnera */
+  padding: 0;
+}
+
+ul li {
+  margin: 0 10px; /* Razmak između logo slika */
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
